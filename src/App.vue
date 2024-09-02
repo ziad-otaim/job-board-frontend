@@ -1,26 +1,46 @@
-<template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
-</template>
+<script setup>
+import { computed } from "vue";
+import NavBar from "./components/NavBar.vue";
+import { useUserStore } from "./store/user";
+import "vue3-toastify/dist/index.css";
+import "./assets/main.css";
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+const userStore = useUserStore();
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+const isAuthenticated = computed(() => userStore.getIsAuthenticated);
 </script>
 
+<template>
+  <div id="app">
+    <NavBar v-if="isAuthenticated" />
+    <main>
+      <router-view></router-view>
+    </main>
+  </div>
+</template>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+/* Add your styles here */
+header {
+  background: #f8f9fa;
+  padding: 1rem;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+nav li {
+  margin-right: 1rem;
+}
+
+button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
 }
 </style>
