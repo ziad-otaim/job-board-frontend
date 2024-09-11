@@ -4,7 +4,7 @@ import { inject, ref } from "vue";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
-const email = ref("employer@test.com");
+const email = ref("admin@gmail.com");
 const password = ref("123456789");
 const isLoading = ref(false);
 const errorMessage = ref("");
@@ -22,7 +22,7 @@ const submitLogin = async () => {
     const { token, user } = response.data;
     userStore.setToken(token);
     userStore.setUser(user);
-    router.push("/jobs"); // Redirect to jobs listing after login
+    router.push("/");
   } catch (error) {
     errorMessage.value = "Invalid email or password. Please try again.";
     console.error("Error logging in:", error);

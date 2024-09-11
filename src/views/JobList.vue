@@ -26,6 +26,7 @@ const fetchJobs = async () => {
       location: location.value,
       category: category.value,
       search: search.value,
+      status: !isEmployer ? "approved" : "",
     });
     jobs.value = response.data;
   } catch (error) {
@@ -113,7 +114,19 @@ watch([location, category, search], fetchJobs);
           'card-loading': isLoading.deleting,
         }"
       >
-        <h5 class="mb-1">{{ job.title }}</h5>
+        <div class="d-flex gap-2 align-items-center">
+          <h5 class="mb-1">
+            {{ job.title }}
+          </h5>
+          <div
+            class="px-2 py-1 rounded text-capitalize text-sm h6"
+            :class="
+              job.status === 'pending' ? 'bg-warning' : 'bg-success text-white'
+            "
+          >
+            {{ job.status }}
+          </div>
+        </div>
         <p class="mb-1"><strong>Location:</strong> {{ job.location }}</p>
         <p class="mb-1"><strong>Category:</strong> {{ job.category }}</p>
         <p class="mb-1"><strong>Description:</strong> {{ job.description }}</p>

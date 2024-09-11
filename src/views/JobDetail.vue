@@ -47,6 +47,14 @@ onMounted(fetchJobDetails);
     <!-- Job Details -->
     <div v-else>
       <div class="card-body">
+        <div
+          class="px-2 py-1 rounded text-capitalize text-sm h6 w-fit"
+          :class="
+            job.status === 'pending' ? 'bg-warning' : 'bg-success text-white'
+          "
+        >
+          {{ job.status }}
+        </div>
         <h5 class="card-title">{{ job.title }}</h5>
         <p class="card-text">{{ job.description }}</p>
         <ul class="list-unstyled">
