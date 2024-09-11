@@ -62,7 +62,7 @@ if (isAdmin.value) {
       </div>
     </div>
   </div>
-  <div v-else>
+  <div class="container" v-else>
     <h1>Welcome to the Job Board</h1>
     <router-link to="/jobs">View Jobs</router-link>
   </div>

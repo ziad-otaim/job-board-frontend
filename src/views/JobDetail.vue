@@ -52,6 +52,7 @@ onMounted(fetchJobDetails);
           :class="
             job.status === 'pending' ? 'bg-warning' : 'bg-success text-white'
           "
+          v-if="isEmployer"
         >
           {{ job.status }}
         </div>

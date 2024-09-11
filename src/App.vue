@@ -8,6 +8,8 @@ import "./assets/main.css";
 const userStore = useUserStore();
 
 const isAuthenticated = computed(() => userStore.getIsAuthenticated);
+
+document.title = "Job Board";
 </script>
 
 <template>

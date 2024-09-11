@@ -36,10 +36,6 @@ const submitRegister = async () => {
 
     errorMessage.value = "";
     successMessage.value = "Registration successful! Please log in.";
-    name.value = "";
-    email.value = "";
-    password.value = "";
-    passwordConfirmation.value = "";
     const timer = setTimeout(() => {
       router.push("/login");
     }, 1000);
